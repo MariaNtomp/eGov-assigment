@@ -14,7 +14,7 @@ $("document").ready(function () {
     $("#backButton").hide();
   }
 
-  // 🔹 Load all questions (GR + EN)
+  // Load all questions (GR + EN)
   function getQuestions() {
     return fetch("question-utils/all-questions.json")
       .then((response) => response.json())
@@ -30,7 +30,7 @@ $("document").ready(function () {
       .catch((error) => console.error("Error loading questions:", error));
   }
 
-  // 🔹 Load evidence (required docs)
+  // Load evidence (required docs)
   function getEvidences() {
     return fetch("question-utils/cpsv.json")
       .then((response) => response.json())
@@ -45,7 +45,7 @@ $("document").ready(function () {
       .catch((error) => console.error("Error loading evidences:", error));
   }
 
-  // 🔹 Load FAQs
+  // Load FAQs
   function getFaq() {
     return fetch("question-utils/faq.json")
       .then((response) => response.json())
@@ -60,7 +60,7 @@ $("document").ready(function () {
       .catch((error) => console.error("Error loading FAQs:", error));
   }
 
-  // ✅ Display evidence (required documents)
+  // Display evidence (required documents)
   function getEvidencesById(id) {
     var selectedEvidence =
       currentLanguage === "greek" ? all_evidences : all_evidences_en;
@@ -85,7 +85,7 @@ $("document").ready(function () {
     resultWrapper.appendChild(result);
   }
 
-  // ✅ Load FAQs dynamically
+  // Load FAQs dynamically
   function loadFaqs() {
     var faqData = currentLanguage === "greek" ? faq : faq_en;
     var faqTitle =
@@ -121,7 +121,7 @@ $("document").ready(function () {
     $(".faqContainer").html(faqElement);
   }
 
-  // ✅ Load each question dynamically
+  // Load each question dynamically
   function loadQuestion(questionId, noError) {
     $("#nextQuestion").show();
     if (currentQuestion > 0) $("#backButton").show();
@@ -158,7 +158,7 @@ $("document").ready(function () {
     $(".question-container").html(questionElement);
   }
 
-  // ❌ When conditions not met
+  // When conditions not met
   function skipToEnd(message) {
     const errorEnd = document.createElement("h5");
     const error =
@@ -171,14 +171,14 @@ $("document").ready(function () {
     hideFormBtns();
   }
 
-  // ✅ Start button
+  // Start button
   $("#startBtn").click(function () {
     $("#intro").html("");
     $("#languageBtn").hide();
     $("#questions-btns").show();
   });
 
-  // ✅ Retrieve answers and show results
+  // Retrieve answers and show results
   function retrieveAnswers() {
     var allAnswers = [];
     for (var i = 0; i < totalQuestions; i++) {
@@ -211,7 +211,7 @@ $("document").ready(function () {
       : setResult("You can proceed with your child’s school enrollment.");
   }
 
-  // ✅ Final results
+  // Final results
   function submitForm() {
     const resultWrapper = document.createElement("div");
     const titleText =
@@ -236,7 +236,7 @@ $("document").ready(function () {
     hideFormBtns();
   }
 
-  // ✅ Navigation buttons
+  // Navigation buttons
   $("#nextQuestion").click(function () {
     if ($(".govgr-radios__input").is(":checked")) {
       var selectedRadioButtonIndex =
